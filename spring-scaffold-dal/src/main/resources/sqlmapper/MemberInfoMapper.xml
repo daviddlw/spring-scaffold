@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.david.scaffold.dal.dao.MemberInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.david.scaffold.dal.model.MemberInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="member_no" property="memberNo" jdbcType="CHAR" />
+    <result column="username" property="username" jdbcType="CHAR" />
+    <result column="realname" property="realname" jdbcType="CHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

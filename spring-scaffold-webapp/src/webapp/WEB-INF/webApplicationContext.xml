@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:component-scan base-package="com.david.scaffold.webapp" />
+	<mvc:annotation-driven />
+
+	<bean name="beanResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver"></bean>
+	<bean name="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="1"></property>
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.david.scaffold.service.interceptor.TimeInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- 针对json字符串转换 -->
+	<bean id="fastJsonMessageConverter"
+		class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+		<property name="charset" value="UTF-8" />
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json</value>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+		<property name="features">
+			<list>
+				<value>WriteMapNullValue</value>
+				<value>QuoteFieldNames</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="stringMessageConverter"
+		class="org.springframework.http.converter.StringHttpMessageConverter">
+		<constructor-arg value="UTF-8" />
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="stringMessageConverter" />
+				<ref bean="fastJsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

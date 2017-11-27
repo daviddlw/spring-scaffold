@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--home/logs/logback/模块名/app.log -->
+		<file>C:/log/spring-scaffold/app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- /home/logs/logback/模块名/app.log.%d.gz -->
+			<fileNamePattern>C:/log/spring-scaffold/test.log.%d.gz
+			</fileNamePattern>
+			<maxHistory>14</maxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="com.eif.framework.log.client.logback.layout.JsonLayout">
+				<jsonFormatter
+					class="com.eif.framework.log.client.logback.JacksonJsonFormatterEx">
+				</jsonFormatter>
+				<timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSZ</timestampFormat>
+				<includeContextName>false</includeContextName>
+				<includeMessage>false</includeMessage>
+				<appendLineSeparator>true</appendLineSeparator>
+			</layout>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>1000</queueSize>
+		<appender-ref ref="FILE" />
+	</appender>
+
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
+

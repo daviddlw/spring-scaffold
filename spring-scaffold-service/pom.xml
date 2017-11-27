@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.david</groupId>
+		<artifactId>spring-scaffold</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>spring-scaffold-service</artifactId>
+	<name>spring-scaffold-service</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.david</groupId>
+			<artifactId>spring-scaffold-facade</artifactId>
+			<version>${self.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.david</groupId>
+			<artifactId>spring-scaffold-dal</artifactId>
+			<version>${self.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-betwixt</groupId>
+			<artifactId>commons-betwixt</artifactId>
+			<version>${betwixt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+	</dependencies>
+</project>
