@@ -9,6 +9,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:/spring/applicationContext*.xml</param-value>
 	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<!-- 字符集过滤器 -->
 	<filter>
@@ -23,10 +27,6 @@
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
@@ -43,7 +43,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
+	 <servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>*.form</url-pattern>
 	</servlet-mapping>
@@ -56,9 +56,9 @@
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>*.html</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
-	<servlet-mapping>
+ 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.js</url-pattern>
 	</servlet-mapping>

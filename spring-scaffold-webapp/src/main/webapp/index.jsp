@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HelloWord</title>
+<title>WebAPP</title>
 </head>
 <body>
-	<h2>Welcome to the simple-webapp</h2>
+	<h2>Welcome to the WebAPP</h2>
 </body>
 </html>
